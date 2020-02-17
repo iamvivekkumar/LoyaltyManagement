@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/LoyaltyManagement/v16/Server/sqlite3
+/.vs
 /LoyaltyManagement.API/obj
 /LoyaltyManagement.BLL/obj
 /LoyaltyManagement.DAL/obj
