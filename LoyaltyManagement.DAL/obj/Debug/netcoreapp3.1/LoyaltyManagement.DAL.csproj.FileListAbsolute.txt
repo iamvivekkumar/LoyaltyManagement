@@ -1,0 +1,10 @@
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\bin\Debug\netcoreapp3.1\LoyaltyManagement.DAL.deps.json
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\bin\Debug\netcoreapp3.1\LoyaltyManagement.DAL.runtimeconfig.json
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\bin\Debug\netcoreapp3.1\LoyaltyManagement.DAL.runtimeconfig.dev.json
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\bin\Debug\netcoreapp3.1\LoyaltyManagement.DAL.dll
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\bin\Debug\netcoreapp3.1\LoyaltyManagement.DAL.pdb
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\obj\Debug\netcoreapp3.1\LoyaltyManagement.DAL.csprojAssemblyReference.cache
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\obj\Debug\netcoreapp3.1\LoyaltyManagement.DAL.AssemblyInfoInputs.cache
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\obj\Debug\netcoreapp3.1\LoyaltyManagement.DAL.AssemblyInfo.cs
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\obj\Debug\netcoreapp3.1\LoyaltyManagement.DAL.dll
+C:\Vivek\P\POC\LoyaltyManagement\LoyaltyManagement.DAL\obj\Debug\netcoreapp3.1\LoyaltyManagement.DAL.pdb

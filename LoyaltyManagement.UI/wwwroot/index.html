@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>AngularJS JWT Authentication Example & Tutorial</title>
+
+    <!-- bootstrap cs -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- application cs -->
+    <link href="app-content/app.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- main app container -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="col-sm-8 col-sm-offset-2">
+                <ui-view></ui-view>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- angular scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.7.9/angular-messages.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.25/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+
+    <!-- application scripts -->
+    <script src="app.js"></script>
+    <script src="app-helpers/constants.js"></script>
+    <script src="app-services/services.js"></script>
+    <script src="home/homeController.js"></script>
+    <script src="login/loginController.js"></script>
+</body>
+</html>
