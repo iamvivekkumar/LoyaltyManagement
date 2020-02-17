@@ -9,6 +9,7 @@ namespace LoyaltyManagement.UnitTests
         public void Test1()
         {
             //Testing
+            //Testing2
         }
     }
 }
