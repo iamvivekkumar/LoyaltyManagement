@@ -8,5 +8,7 @@ namespace LoyaltyManagement.DAL.UserInfo
     public interface IUserRepository
     {
         public User AuthenticateUser(User user);
+
+        public User RegisterUser(User user);
     }
 }

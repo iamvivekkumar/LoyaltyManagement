@@ -1,5 +1,6 @@
 ﻿using LoyaltyManagement.DAL.Context;
 using LoyaltyManagement.DAL.Entities;
+using System;
 using System.Linq;
 
 namespace LoyaltyManagement.DAL.UserInfo
@@ -13,6 +14,11 @@ namespace LoyaltyManagement.DAL.UserInfo
             this.loyalityContext = loyalityContext;
         }
 
+        /// <summary>
+        /// To authenticate user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public User AuthenticateUser(User user)
         {
             var userinfo = (from n in loyalityContext.Users
@@ -22,5 +28,22 @@ namespace LoyaltyManagement.DAL.UserInfo
 
             return userinfo;
         }
+
+        /// <summary>
+        /// To Register User
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public User RegisterUser(User user)
+        {
+            user.Id = new Guid();
+            loyalityContext.Users.Add(user);
+            loyalityContext.SaveChanges();
+            
+
+            return user;
+        }
+
+        
     }
 }
