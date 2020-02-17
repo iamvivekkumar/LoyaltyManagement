@@ -29,14 +29,7 @@ namespace LoyaltyManagement
             services.AddAutoMapper(typeof(Startup));
 
             // Add CORS policy on top
-            services.AddCors(options =>
-            {
-                options.AddPolicy(MyAllowSpecificOrigins, // introduced a string constant just as a label "AllowAllOriginsPolicy"
-                builder =>
-                {
-                    builder.AllowAnyOrigin().AllowAnyHeader(); ;
-                });
-            });
+            services.AddCors();
 
             services.AddControllers();
 
@@ -45,6 +38,9 @@ namespace LoyaltyManagement
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
+                    options.RequireHttpsMetadata = false;
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
@@ -77,12 +73,15 @@ namespace LoyaltyManagement
                 app.UseDeveloperExceptionPage();
             }
 
-            
+            app.UseCors(x => x
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors(MyAllowSpecificOrigins);
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

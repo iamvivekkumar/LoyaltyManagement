@@ -22,7 +22,7 @@ namespace LoyaltyManagement.BLL.User
         }
 
         /// <summary>
-        /// for getting user authentocation
+        /// for getting user authentication
         /// </summary>
         /// <param name="userModel"></param>
         /// <returns></returns>
@@ -31,12 +31,14 @@ namespace LoyaltyManagement.BLL.User
             var user = _mapper.Map<DAL.Entities.User>(userModel);
             var userInfo = _userInfo.AuthenticateUser(user);
             
-            //if(userInfo != null)
-            //{
-            //    return _mapper.Map<UserModel>(userInfo);
-            //}
+            return _mapper.Map<UserModel>(userInfo);
 
-            //return null;
+        }
+
+        public UserModel RegisterUser(UserModel userModel)
+        {
+            var user = _mapper.Map<DAL.Entities.User>(userModel);
+            var userInfo = _userInfo.RegisterUser(user);
 
             return _mapper.Map<UserModel>(userInfo);
 

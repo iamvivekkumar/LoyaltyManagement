@@ -13,6 +13,7 @@ namespace LoyaltyManagement.API.AutoMapping
         {
             //DTO To business Models
             CreateMap<UserLoginDto, BLL.Models.UserModel>();
+            CreateMap<UserRegistrationDto, BLL.Models.UserModel>();
 
 
 

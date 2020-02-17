@@ -32,6 +32,22 @@
             );
         }
 
+        service.registration = function (data, callback) {
+            $http.post(constants().registrationUri, data)
+                .then(function (response) {
+                    if (response.status == 201) {
+                       
+                        callback(true, response.data);
+                    } else {
+                        callback(false);
+                    }
+                },
+                    function (err) {
+                        callback(false);
+                    }
+                );
+        }
+
         service.logout = function () {
             // remove user from local storage and clear http auth header
             delete $localStorage.currentUser;

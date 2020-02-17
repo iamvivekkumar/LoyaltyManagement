@@ -8,8 +8,6 @@
     function Controller($location, $localStorage, services) {
         var vm = this;
 
-        vm.login = login;
-
         initController();
 
         function initController() {
@@ -22,7 +20,7 @@
             }
         };
 
-        function login() {
+        vm.login = function() {
             vm.loading = true;
             services.login(vm.username, vm.password, function (result) {
                 if (result === true) {

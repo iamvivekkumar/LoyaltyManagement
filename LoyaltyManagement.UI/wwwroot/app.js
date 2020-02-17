@@ -6,7 +6,10 @@
         .config(config)
         .run(run);
 
-    function config($stateProvider, $urlRouterProvider) {
+    function config($stateProvider, $urlRouterProvider, $locationProvider) {
+
+        $locationProvider.hashPrefix(''); // by default '!'
+
         // default route
         $urlRouterProvider.otherwise("/");
 
@@ -16,6 +19,12 @@
                 url: '/',
                 templateUrl: 'home/home.html',
                 controller: 'homeController',
+                controllerAs: 'vm'
+            })
+            .state('registration', {
+                url: '/registration',
+                templateUrl: 'registration/registration.html',
+                controller: 'registrationController',
                 controllerAs: 'vm'
             })
             .state('login', {

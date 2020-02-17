@@ -11,5 +11,7 @@ namespace LoyaltyManagement.BLL.User
     public interface IUser
     {
         public UserModel AuthenticateUser(UserModel userModel);
+
+        public UserModel RegisterUser(UserModel userModel);
     }
 }
