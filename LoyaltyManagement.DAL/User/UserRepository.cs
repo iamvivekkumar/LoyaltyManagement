@@ -6,7 +6,7 @@ using System.Linq;
 namespace LoyaltyManagement.DAL.UserInfo
 {
     /// <summary>
-    /// UA class for user related operation
+    /// A class for user related operation
     /// </summary>
     public class UserRepository : IUserRepository
     {
