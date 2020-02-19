@@ -11,7 +11,7 @@ namespace LoyaltyManagement.BLL.User
     /// </summary>
     public class User : IUser
     {
-        
+
         private DAL.UserInfo.IUserRepository _userInfo;
         private readonly IMapper _mapper;
 
@@ -28,19 +28,33 @@ namespace LoyaltyManagement.BLL.User
         /// <returns></returns>
         public UserModel AuthenticateUser(UserModel userModel)
         {
-            var user = _mapper.Map<DAL.Entities.User>(userModel);
-            var userInfo = _userInfo.AuthenticateUser(user);
-            
-            return _mapper.Map<UserModel>(userInfo);
+            try
+            {
+                var user = _mapper.Map<DAL.Entities.User>(userModel);
+                var userInfo = _userInfo.AuthenticateUser(user);
+
+                return _mapper.Map<UserModel>(userInfo);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
         }
 
         public UserModel RegisterUser(UserModel userModel)
         {
-            var user = _mapper.Map<DAL.Entities.User>(userModel);
-            var userInfo = _userInfo.RegisterUser(user);
+            try
+            {
+                var user = _mapper.Map<DAL.Entities.User>(userModel);
+                var userInfo = _userInfo.RegisterUser(user);
 
-            return _mapper.Map<UserModel>(userInfo);
+                return _mapper.Map<UserModel>(userInfo);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
         }
     }

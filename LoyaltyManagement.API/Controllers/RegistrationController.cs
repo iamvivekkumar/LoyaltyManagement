@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LoyaltyManagement.API.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles = "User,Admin")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User,Admin")]
     [Route("api/[controller]")]
-    [ApiController]   
+    [ApiController]
     public class RegistrationController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -25,16 +25,22 @@ namespace LoyaltyManagement.API.Controllers
             _userInfo = userInfo;
         }
 
-        
+
         [HttpPost]
         public IActionResult UserRegistration([FromBody]UserRegistrationDto userRegistrationDto)
         {
-            var userInfo = _mapper.Map<BLL.Models.UserModel>(userRegistrationDto);
+            try
+            {
+                var userInfo = _mapper.Map<BLL.Models.UserModel>(userRegistrationDto);
 
-            var user = _userInfo.RegisterUser(userInfo);
+                var user = _userInfo.RegisterUser(userInfo);
 
-
-            return Created("", user);
+                return Created("", user);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

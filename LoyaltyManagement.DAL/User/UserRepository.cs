@@ -24,12 +24,19 @@ namespace LoyaltyManagement.DAL.UserInfo
         /// <returns></returns>
         public User AuthenticateUser(User user)
         {
-            var userinfo = (from n in loyalityContext.Users
-                            where n.Email == user.Email && n.Password == user.Password
-                           select n)
-                           .FirstOrDefault();
+            try
+            {
+                var userinfo = (from n in loyalityContext.Users
+                                where n.Email == user.Email && n.Password == user.Password
+                                select n)
+                               .FirstOrDefault();
 
-            return userinfo;
+                return userinfo;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>
@@ -39,14 +46,20 @@ namespace LoyaltyManagement.DAL.UserInfo
         /// <returns>User</returns>
         public User RegisterUser(User user)
         {
-            user.Id = new Guid();
-            loyalityContext.Users.Add(user);
-            loyalityContext.SaveChanges();
-            
+            try
+            {
+                user.Id = new Guid();
+                loyalityContext.Users.Add(user);
+                loyalityContext.SaveChanges();
 
-            return user;
+                return user;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        
+
     }
 }

@@ -34,18 +34,25 @@ namespace LoyaltyManagement.Controllers
         [HttpPost]
         public IActionResult Login([FromBody]UserLoginDto userLoginDto)
         {
-            IActionResult response = Unauthorized();
-            var userInfo = _mapper.Map<BLL.Models.UserModel>(userLoginDto);
-
-            var user = _userInfo.AuthenticateUser(userInfo);
-
-            if (user != null)
+            try
             {
-                var tokenString = GenerateJSONWebToken(user);
-                response = Ok(new { token = tokenString });
-            }
+                IActionResult response = Unauthorized();
+                var userInfo = _mapper.Map<BLL.Models.UserModel>(userLoginDto);
 
-            return response;
+                var user = _userInfo.AuthenticateUser(userInfo);
+
+                if (user != null)
+                {
+                    var tokenString = GenerateJSONWebToken(user);
+                    response = Ok(new { token = tokenString });
+                }
+
+                return response;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>
@@ -55,23 +62,30 @@ namespace LoyaltyManagement.Controllers
         /// <returns></returns>
         private string GenerateJSONWebToken(UserModel userInfo)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            try
+            {
+                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var claims = new[] {
+                var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, userInfo.Email),
-                new Claim(JwtRegisteredClaimNames.Email, userInfo.Password),                
+                new Claim(JwtRegisteredClaimNames.Email, userInfo.Password),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role,userInfo.Role)
             };
 
-            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
-                _config["Jwt:Issuer"],
-                claims,
-                expires: DateTime.Now.AddMinutes(120),
-                signingCredentials: credentials);
+                var token = new JwtSecurityToken(_config["Jwt:Issuer"],
+                    _config["Jwt:Issuer"],
+                    claims,
+                    expires: DateTime.Now.AddMinutes(120),
+                    signingCredentials: credentials);
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+                return new JwtSecurityTokenHandler().WriteToken(token);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }
