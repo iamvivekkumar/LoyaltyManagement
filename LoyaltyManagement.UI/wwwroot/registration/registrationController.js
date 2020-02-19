@@ -7,16 +7,15 @@
 
     function Controller(services) {
         var vm = this;
-        vm.name = "";
         
 
         vm.registration = function () {
-            debugger
             vm.loading = true;
             var data = {
                 name: vm.name,
                 email: vm.email,
                 password: vm.password,
+                role: vm.role,
                 contactnumber: vm.contactnumber,
                 address: vm.address
             }

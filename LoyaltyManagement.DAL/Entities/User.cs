@@ -16,6 +16,9 @@ namespace LoyaltyManagement.DAL.Entities
         [Required]
         public string Email { get; set; }
 
+        [Required]
+        public string Role { get; set; }
+
         public string ContactNumber { get; set; }
 
         public string Address { get; set; }

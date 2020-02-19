@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace LoyaltyManagement.DAL.UserInfo
 {
+    /// <summary>
+    /// UA class for user related operation
+    /// </summary>
     public class UserRepository : IUserRepository
     {
         private LoyalityContext loyalityContext;
@@ -32,8 +35,8 @@ namespace LoyaltyManagement.DAL.UserInfo
         /// <summary>
         /// To Register User
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
+        /// <param name="user">The user</param>
+        /// <returns>User</returns>
         public User RegisterUser(User user)
         {
             user.Id = new Guid();

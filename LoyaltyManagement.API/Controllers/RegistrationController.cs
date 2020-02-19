@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LoyaltyManagement.API.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles = "User,Admin")]
     [Route("api/[controller]")]
     [ApiController]   
     public class RegistrationController : ControllerBase

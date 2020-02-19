@@ -7,7 +7,7 @@ using System.Text;
 namespace LoyaltyManagement.BLL.User
 {
     /// <summary>
-    /// A clas for user operation
+    /// A class for user operation
     /// </summary>
     public class User : IUser
     {

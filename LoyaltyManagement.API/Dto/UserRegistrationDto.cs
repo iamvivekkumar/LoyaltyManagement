@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace LoyaltyManagement.API.Dto
 {
+    /// <summary>
+    /// User Registration DTO
+    /// </summary>
     public class UserRegistrationDto
     {
         public string Name { get; set; }
 
         [Required]
         public string Email { get; set; }
+
+        [Required]
+        public string Role { get; set; }
 
         public string ContactNumber { get; set; }
 

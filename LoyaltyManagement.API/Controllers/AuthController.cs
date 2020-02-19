@@ -48,6 +48,11 @@ namespace LoyaltyManagement.Controllers
             return response;
         }
 
+        /// <summary>
+        /// To Generate Token
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
         private string GenerateJSONWebToken(UserModel userInfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
@@ -55,8 +60,9 @@ namespace LoyaltyManagement.Controllers
 
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, userInfo.Email),
-                new Claim(JwtRegisteredClaimNames.Email, userInfo.Password),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Email, userInfo.Password),                
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Role,"Admin")
             };
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"],

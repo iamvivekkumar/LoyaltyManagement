@@ -32,6 +32,14 @@
             </div>
         </div>
 
+        <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.role.$invalid }">
+            <label for="role">Role</label>
+            <input type="text" name="role" class="form-control" ng-model="vm.role" required />
+            <div ng-messages="form.$submitted && form.role.$error" class="help-block">
+                <div ng-message="required">Role is required</div>
+            </div>
+        </div>
+
         <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.contactnumber.$invalid }">
             <label for="contactnumber">Contact number</label>
             <input type="text" name="contactnumber" class="form-control" ng-model="vm.contactnumber" required />
