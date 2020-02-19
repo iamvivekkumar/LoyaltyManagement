@@ -29,14 +29,7 @@ namespace LoyaltyManagement.API.Controllers
         [HttpPost]
         public IActionResult UserRegistration([FromBody]UserRegistrationDto userRegistrationDto)
         {
-            IActionResult response =  Ok();
-
-            if (!ModelState.IsValid)
-            {
-
-            }
-
-             var userInfo = _mapper.Map<BLL.Models.UserModel>(userRegistrationDto);
+            var userInfo = _mapper.Map<BLL.Models.UserModel>(userRegistrationDto);
 
             var user = _userInfo.RegisterUser(userInfo);
 

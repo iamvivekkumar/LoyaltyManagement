@@ -62,7 +62,7 @@ namespace LoyaltyManagement.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, userInfo.Email),
                 new Claim(JwtRegisteredClaimNames.Email, userInfo.Password),                
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Role,"Admin")
+                new Claim(ClaimTypes.Role,userInfo.Role)
             };
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"],
