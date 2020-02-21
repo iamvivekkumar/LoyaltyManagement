@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using LoyaltyManagement.API.Dto;
+﻿using AutoMapper;
+using LoyaltyManagement.API.DTOs;
 using LoyaltyManagement.BLL.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
-namespace LoyaltyManagement.Controllers
+namespace LoyaltyManagement.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -44,7 +40,7 @@ namespace LoyaltyManagement.Controllers
                 if (user != null)
                 {
                     var tokenString = GenerateJSONWebToken(user);
-                    response = Ok(new { token = tokenString });
+                    response = Ok(new { token = tokenString, id = user.Id, name = user.Name });
                 }
 
                 return response;
@@ -68,8 +64,8 @@ namespace LoyaltyManagement.Controllers
                 var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
                 var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, userInfo.Email),
-                new Claim(JwtRegisteredClaimNames.Email, userInfo.Password),
+                new Claim(JwtRegisteredClaimNames.Sub, userInfo.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role,userInfo.Role)
             };

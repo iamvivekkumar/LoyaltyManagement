@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using LoyaltyManagement.API.Dto;
+using LoyaltyManagement.API.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

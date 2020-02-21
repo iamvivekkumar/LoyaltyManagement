@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LoyaltyManagement.API.Dto
+namespace LoyaltyManagement.API.DTOs
 {
     /// <summary>
     /// User DTO

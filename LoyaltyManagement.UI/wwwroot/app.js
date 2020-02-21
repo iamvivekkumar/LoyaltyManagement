@@ -32,6 +32,11 @@
                 templateUrl: 'login/login.html',
                 controller: 'loginController',
                 controllerAs: 'vm'
+            })
+            .state('logout', {
+                url: '/logout',
+                controller: 'logoutController',
+                controllerAs: 'vm'
             });
     }
 

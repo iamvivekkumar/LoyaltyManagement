@@ -7,7 +7,6 @@
 
     function Controller(services) {
         var vm = this;
-        
 
         vm.registration = function () {
             vm.loading = true;
@@ -29,10 +28,6 @@
                 }
             });
         };
-
-        vm.logout = function () {
-            services.logout();
-        }
     }
 
 })();
