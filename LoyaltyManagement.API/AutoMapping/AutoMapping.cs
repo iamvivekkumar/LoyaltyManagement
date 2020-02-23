@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace LoyaltyManagement.API.AutoMapping
 {
+    /// <summary>
+    /// A Class responsible for auto mapping 
+    /// </summary>
     public class AutoMapping : Profile
     {
         public AutoMapping()

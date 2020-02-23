@@ -48,11 +48,32 @@ namespace LoyaltyManagement.DAL.UserInfo
         {
             try
             {
+                if (IsUserExist(user.Email))
+                {
+                    return null;
+                }
                 user.Id = new Guid();
                 loyalityContext.Users.Add(user);
                 loyalityContext.SaveChanges();
 
                 return user;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool IsUserExist(string email)
+        {
+            try
+            {
+                var user = (from n in loyalityContext.Users
+                                   where n.Email == email
+                                   select n)
+                                   .FirstOrDefault();
+
+                return user != null? true : false;
             }
             catch (Exception)
             {

@@ -2,8 +2,10 @@
 using LoyaltyManagement.API.DTOs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Net;
 
 namespace LoyaltyManagement.API.Controllers
 {
@@ -31,7 +33,7 @@ namespace LoyaltyManagement.API.Controllers
 
                 var user = _userInfo.RegisterUser(userInfo);
 
-                return Created("", user);
+                return user != null ? Created("", user) : StatusCode(StatusCodes.Status409Conflict, $"An existing record with the Email '{userRegistrationDto.Email}' was already found.");
             }
             catch (Exception)
             {

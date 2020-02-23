@@ -11,6 +11,13 @@ namespace LoyaltyManagement.DAL.Context
             
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<User>(entity => {
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
+        }
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["LoyaltyManagement"].ConnectionString);
@@ -29,8 +36,8 @@ namespace LoyaltyManagement.DAL.Context
 
 
         //add-migration InitialMigration
-        //update-database migrationname
-        
+        //update-database UniqueEmail
+
 
         //Install-Package Microsoft.EntityFrameworkCore.Tools in API
 
